@@ -84,7 +84,7 @@ const Index = () => {
             <div className="flex items-center gap-2 font-heading font-bold text-2xl">
               <Icon name="Zap" className="text-primary" size={32} />
               <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                ЭкспрессДоставка
+                НОВАЯ ДОСТАВКА
               </span>
             </div>
             <div className="hidden md:flex items-center gap-6">
@@ -292,7 +292,7 @@ const Index = () => {
                 <CardContent className="pt-6">
                   <div className="prose prose-lg max-w-none">
                     <p className="text-lg leading-relaxed">
-                      <strong className="font-heading text-primary">ЭкспрессДоставка</strong> — современная курьерская служба, которая работает с 2015 года. 
+                      <strong className="font-heading text-primary">НОВАЯ ДОСТАВКА</strong> — современная курьерская служба, которая работает с 2015 года. 
                       Мы доставили более 2 миллионов посылок и заслужили доверие тысяч клиентов по всей России.
                     </p>
                     <p className="text-lg leading-relaxed mt-4">
@@ -416,10 +416,10 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 font-heading font-bold text-xl">
               <Icon name="Zap" className="text-primary" size={24} />
-              ЭкспрессДоставка
+              НОВАЯ ДОСТАВКА
             </div>
             <div className="text-sm text-muted-foreground">
-              © 2024 ЭкспрессДоставка. Все права защищены.
+              © 2024 НОВАЯ ДОСТАВКА. Все права защищены.
             </div>
             <div className="flex gap-4">
               <button className="hover:text-primary transition-colors">
