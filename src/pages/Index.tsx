@@ -36,26 +36,90 @@ const Index = () => {
     }
   ];
 
-  const tariffs = [
-    {
-      name: 'Базовый',
-      price: '150₽',
-      features: ['Доставка в течение дня', 'Вес до 5 кг', 'Поддержка 24/7', 'Отслеживание'],
-      popular: false
-    },
-    {
-      name: 'Экспресс',
-      price: '300₽',
-      features: ['Доставка за 1-2 часа', 'Вес до 10 кг', 'Приоритет', 'SMS уведомления', 'Поддержка 24/7'],
-      popular: true
-    },
-    {
-      name: 'Премиум',
-      price: '500₽',
-      features: ['Доставка за 30 минут', 'Вес до 15 кг', 'Личный курьер', 'Упаковка в подарок', 'VIP поддержка'],
-      popular: false
-    }
-  ];
+  const tariffs = {
+    city: [
+      {
+        name: 'Базовый',
+        price: '150₽',
+        features: ['Доставка в течение дня', 'Вес до 5 кг', 'Поддержка 24/7', 'Отслеживание'],
+        popular: false
+      },
+      {
+        name: 'Экспресс',
+        price: '300₽',
+        features: ['Доставка за 1-2 часа', 'Вес до 10 кг', 'Приоритет', 'SMS уведомления', 'Поддержка 24/7'],
+        popular: true
+      },
+      {
+        name: 'Премиум',
+        price: '500₽',
+        features: ['Доставка за 30 минут', 'Вес до 15 кг', 'Личный курьер', 'Упаковка в подарок', 'VIP поддержка'],
+        popular: false
+      }
+    ],
+    russia: [
+      {
+        name: 'Стандарт',
+        price: 'от 800₽',
+        features: ['Доставка 3-7 дней', 'Вес до 20 кг', 'Все регионы России', 'Отслеживание', 'Страховка'],
+        popular: false
+      },
+      {
+        name: 'Ускоренная',
+        price: 'от 1500₽',
+        features: ['Доставка 1-3 дня', 'Вес до 30 кг', 'Приоритетная обработка', 'SMS/Email уведомления', 'Страховка до 100 000₽'],
+        popular: true
+      },
+      {
+        name: 'Авиа',
+        price: 'от 2500₽',
+        features: ['Доставка за 24 часа', 'Вес до 25 кг', 'Авиаперевозка', 'Личный менеджер', 'Полная страховка'],
+        popular: false
+      }
+    ],
+    cis: [
+      {
+        name: 'Экономный',
+        price: 'от 1200₽',
+        features: ['Доставка 5-10 дней', 'Вес до 15 кг', 'Все страны СНГ', 'Отслеживание', 'Базовая страховка'],
+        popular: false
+      },
+      {
+        name: 'Оптимальный',
+        price: 'от 2200₽',
+        features: ['Доставка 3-5 дней', 'Вес до 25 кг', 'Ускоренная обработка', 'Таможенное оформление', 'Страховка до 150 000₽'],
+        popular: true
+      },
+      {
+        name: 'Экспресс',
+        price: 'от 3500₽',
+        features: ['Доставка 1-2 дня', 'Вес до 30 кг', 'Приоритет на таможне', 'Личный координатор', 'Полная страховка'],
+        popular: false
+      }
+    ],
+    world: [
+      {
+        name: 'Стандарт',
+        price: 'от 2500₽',
+        features: ['Доставка 10-20 дней', 'Вес до 20 кг', 'Более 200 стран', 'Трекинг', 'Базовая страховка'],
+        popular: false
+      },
+      {
+        name: 'Ускоренная',
+        price: 'от 4500₽',
+        features: ['Доставка 5-10 дней', 'Вес до 30 кг', 'Приоритет', 'Таможенная поддержка', 'Страховка до 200 000₽'],
+        popular: true
+      },
+      {
+        name: 'DHL/FedEx',
+        price: 'от 7000₽',
+        features: ['Доставка 2-4 дня', 'Вес до 40 кг', 'Премиум перевозчик', 'Полное сопровождение', 'Максимальная страховка'],
+        popular: false
+      }
+    ]
+  };
+
+  const [selectedTariffCategory, setSelectedTariffCategory] = useState<'city' | 'russia' | 'cis' | 'world'>('city');
 
   const stats = [
     { value: '50 000+', label: 'Доставок в месяц' },
@@ -171,8 +235,44 @@ const Index = () => {
                 <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">Тарифы</h2>
                 <p className="text-xl text-muted-foreground">Прозрачные цены без скрытых платежей</p>
               </div>
+              
+              <div className="flex justify-center gap-2 mb-12 flex-wrap">
+                <Button 
+                  variant={selectedTariffCategory === 'city' ? 'default' : 'outline'}
+                  onClick={() => setSelectedTariffCategory('city')}
+                  className="min-w-[140px]"
+                >
+                  <Icon name="MapPin" className="mr-2" size={18} />
+                  По городу
+                </Button>
+                <Button 
+                  variant={selectedTariffCategory === 'russia' ? 'default' : 'outline'}
+                  onClick={() => setSelectedTariffCategory('russia')}
+                  className="min-w-[140px]"
+                >
+                  <Icon name="Map" className="mr-2" size={18} />
+                  По России
+                </Button>
+                <Button 
+                  variant={selectedTariffCategory === 'cis' ? 'default' : 'outline'}
+                  onClick={() => setSelectedTariffCategory('cis')}
+                  className="min-w-[140px]"
+                >
+                  <Icon name="Globe2" className="mr-2" size={18} />
+                  СНГ
+                </Button>
+                <Button 
+                  variant={selectedTariffCategory === 'world' ? 'default' : 'outline'}
+                  onClick={() => setSelectedTariffCategory('world')}
+                  className="min-w-[140px]"
+                >
+                  <Icon name="Plane" className="mr-2" size={18} />
+                  Мир
+                </Button>
+              </div>
+
               <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                {tariffs.map((tariff, index) => (
+                {tariffs[selectedTariffCategory].map((tariff, index) => (
                   <Card key={index} className={`relative ${tariff.popular ? 'border-primary border-2 shadow-2xl scale-105' : ''}`}>
                     {tariff.popular && (
                       <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-secondary text-white px-4 py-1 rounded-full text-sm font-bold">
